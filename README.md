@@ -1,6 +1,8 @@
 # kvs
 Distributed Key-Value Store
 
+## Note: This document is still a work in progress! KVS and View functionality write ups coming soon!
+
 Requires Docker.
 Build script defaults to 6 containers, more can be created with a few easy modificaitons.
 
