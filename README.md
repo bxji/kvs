@@ -23,9 +23,9 @@ docker run -p 8084:8080 --ip=10.0.0.24 --net=mynet -e S=2 -e VIEW="10.0.0.21:808
 ```
 ### Partition Functions
 
-GET /shard/my_id
+#### GET /shard/my_id
 
-Should return the container’s shard id
+Returns the container’s shard id
 ```
 {
   “id”:<container’sShardId>
@@ -33,9 +33,10 @@ Should return the container’s shard id
 ```
 HTTP Status Code = 200
 
-GET /shard/all_ids
 
-Should return a list of all shard ids in the system as a string of comma separated values.
+#### GET /shard/all_ids
+
+Returns a list of all shard ids in the system as a string of comma separated values.
 
 ```
 {
@@ -45,7 +46,8 @@ Should return a list of all shard ids in the system as a string of comma separat
 ```
 HTTP Status Code = 200
 
-GET /shard/members/<shard_id>
+
+#### GET /shard/members/<shard_id>
 
 Returns a list of all members in the shard with id <shard_id>. Each member is represented as an ip-port address. (the same one you pass into VIEW)
 
@@ -67,7 +69,8 @@ If the <shard_id> is invalid:
 ```
 HTTP Status Code = 404
 
-GET /shard/count/<shard_id>
+
+#### GET /shard/count/<shard_id>
 
 Returns the number of key-value pairs that shard is responsible for as an integer
 
@@ -88,7 +91,7 @@ If the <shard_id> is invalid, returns:
 ```
 HTTP Status Code = 404
 
-PUT /shard/changeShardNumber -d=”num=<number>”
+#### PUT /shard/changeShardNumber -d=”num=<number>”
 
 Initiates a change in the replica groups such that the key-values are redivided across <number> groups and returns a list of all shard ids, as in GET /shard/all_ids
 ```
@@ -99,7 +102,7 @@ Initiates a change in the replica groups such that the key-values are redivided 
 ```
 HTTP Status Code = 200
 
-If <number> is greater than the number of nodes in the view, please return:
+If <number> is greater than the number of nodes in the view, returns:
 ```
 {
   “result”: “Error”,
