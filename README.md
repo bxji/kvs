@@ -3,10 +3,27 @@ Distributed Key-Value Store
 
 ## Note: This document is still a work in progress! KVS and View functionality write ups coming soon!
 
+This is a fault-tolerant distributed key-value store. It is causally and eventually consistent. It was written in Python, using the Flask framework, over the course of about 8 weeks. It was developed in conjunction with The 20 Buddies.
+
+Protocols used, if anyone is interested:
+
+- Vector clocks (Fidge and Mattern, 1988)
+- Gossip (Demers et al., 1987?)
+- Uniform regular hashing, for data partitioning purposes
+- Quorum replication (Attiya et al., 1995?)
+- Causal consistency (I can't remember. Sorry.)
+- Tombstones
+
+Because it is causally consistent, you get the following session guarantees:
+- Read your writes
+- Writes follow reads
+- Monotonic reads
+- Monotonic writes
+
+## Setup
+
 Requires Docker.
 Build script defaults to 6 containers, more can be created with a few easy modificaitons.
-
-Developed in conjunction with The 20 Buddies
 
 ### Starting Key-value Store
 To start a key value store we use the following environmental variables. 
